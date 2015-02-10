@@ -44,19 +44,18 @@
 <p>To authorize, use this code:</p>
 </blockquote>
 <pre><code class="highlight shell"><span class="c"># With shell, you can just pass the correct header with each request</span>
-curl <span class="s2">"api_endpoint_here"</span>
-  -H <span class="s2">"Authorization: XDFORCE_API_KEY"</span>
+curl --user <span class="s2">"ACCOUNT_ID"</span>:<span class="s2">"XDFORCE_API_KEY"</span> <span class="s2">"API_ENDPOINT"</span>
 </code></pre>
 
 <blockquote>
-<p>Make sure to replace <code class="prettyprint">XDFORCE_API_KEY</code> with your API key.</p>
+<p>Make sure to replace <code class="prettyprint">ACCOUNT_ID</code>, <code class="prettyprint">XDFORCE_API_KEY</code> and <code class="prettyprint">API_ENDPOINT</code> with your Account ID, API key and API endpoint respectively.</p>
 </blockquote>
 
 <p>xDForce uses API keys to allow access to the API. You can register a new xDForce API key at our <a href="http://example.com/developers">developer portal</a>.</p>
 
 <p>xDForce expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
 
-<p><code class="prettyprint">Authorization: XDFORCE_API_KEY</code></p>
+<p><code class="prettyprint">Authorization: Basic ACCOUNT_ID:XDFORCE_API_KEY</code></p>
 
 <aside class="notice">
 You must replace `XDFORCE_API_KEY` with your personal API key.
@@ -253,6 +252,10 @@ By signing up, user will automatically accept the terms and conditions of xDForc
 </tr>
 </tbody></table>
 
+<aside class="notice">
+mismatchRedirectUrl and dangerRedirectUrl will only be available to the users with premium/upgraded plans.
+</aside>
+
 <h2 id="set-monitor-geo-locations">Set Monitor Geo Locations</h2>
 
 <p>Users Geo Locations to the respective Monitor</p>
@@ -323,7 +326,7 @@ When selecting coordinates, try to provide an address as specific as possible fo
 <p><code class="prettyprint">GET /api/v1/monitors</code></p>
 
 <blockquote>
-<p>The above command returns JSON structured like this on SUCCESS:</p>
+<p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre><code class="highlight json"><span class="p">{</span><span class="w">
   </span><span class="s2">"ok"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
@@ -397,6 +400,83 @@ When selecting coordinates, try to provide an address as specific as possible fo
 <pre><code class="highlight json"><span class="p">{</span><span class="w">
   </span><span class="s2">"ok"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
   </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ERROR_MESSAGE"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h2 id="fetch-a-monitor">Fetch a Monitor</h2>
+
+<p>This endpoint will provide the details of a monitor.</p>
+
+<p><code class="prettyprint">GET /api/v1/monitors/&lt;ID&gt;</code></p>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre><code class="highlight json"><span class="p">{</span><span class="w">
+    </span><span class="s2">"ok"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"monitor"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13OG0C57B101"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"_rev"</span><span class="p">:</span><span class="w"> </span><span class="s2">"60-c96ab2a1547ce4c26c1c11407af8324c"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Monitor"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"16VM0C2cuD02"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sample Monitor"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Personal Blog"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"wantsDesktop"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"wantsPhone"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"wantsTablet"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"geoStrategy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"coordinates"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"dangerRedirectUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"mismatchRedirectUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"archived"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"blacklist"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+            </span><span class="s2">"coordinates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kolkata"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">22.572646</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">88.36389500000001</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"radius"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Delhi"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">28.6139391</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">77.2090212</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"radius"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h2 id="get-a-monitor&#39;s-embed-code">Get a Monitor&rsquo;s Embed Code</h2>
+
+<p>This endpoint will provide the embed code of a monitor.</p>
+
+<p><code class="prettyprint">GET /api/v1/monitors/&lt;ID&gt;/embedcode</code></p>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre><code class="highlight json"><span class="p">{</span><span class="w">
+    </span><span class="s2">"ok"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;script type=\"text/javascript\" src=\"http//localhost:3003/tracker\"&gt;&lt;/script&gt;&lt;script type=\"text/javascript\"&gt;xDForce.track(\"12zu0CELWG01\");&lt;/script&gt;;"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h2 id="delete-/-archive-a-monitor">Delete / Archive a Monitor</h2>
+
+<p>Users can archive a monitor through this endpoint.</p>
+
+<p><code class="prettyprint">DELETE /api/v1/monitors/&lt;ID&gt;</code></p>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre><code class="highlight json"><span class="p">{</span><span class="w">
+    </span><span class="s2">"ok"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Monitor archived successfully"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
