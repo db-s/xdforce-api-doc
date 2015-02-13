@@ -368,3 +368,96 @@ Users can archive a monitor through this endpoint.
     "message": "Monitor archived successfully"
 }
 ```
+
+# Cloaked Links
+
+## Create Cloaked Links (Single)
+
+Users can create cloaked links with single url through this endpoint.
+
+### HTTP Request
+
+`POST /api/v1/monitors/<ID>/cloakedlinks/single`
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "ok": true,
+    "message": "Cloaked Link created successfully",
+    "cloaked_link_type": "single",
+    "cloaked_link": {
+        "_id": "133L0CQ9Ke02",
+        "_rev": "1-357f38bfd244ad481a2682e653693cc8",
+        "type": "Link",
+        "monitorId": "12zu0CELWG01",
+        "created": "1423861731407",
+        "name": "Sample Cloaked Link with Single URL",
+        "active": true,
+        "targetUrls": [],
+        "urlRotationIdx": 0,
+        "targetUrl": "http://hello.world.com"
+    }
+}
+```
+
+### Query Parameters
+
+Parameter | Type | Description
+--------- | ------- | -----------
+ID | String | Monitor ID
+name | String | Name of the Cloaked Link
+targetUrl | String | Desired URL for cloaking
+
+<aside class="notice">
+mismatchRedirectUrl and dangerRedirectUrl will only be available to the users with premium/upgraded plans.
+</aside>
+
+## Create Cloaked Links (A/B Test)
+
+Users can create cloaked links with A/B testing through this endpoint.
+
+### HTTP Request
+
+`POST /api/v1/monitors/<ID>/cloakedlinks/abtest`
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "ok": true,
+    "message": "Cloaked Link created successfully",
+    "cloaked_link_type": "A/B Test",
+    "cloaked_link": {
+        "_id": "133L0CQ9Ke01",
+        "_rev": "1-12585a4ae2419818a3b9d4f7f60b1fef",
+        "type": "Link",
+        "monitorId": "12zu0CELWG01",
+        "created": "1423860909012",
+        "name": "Sample Cloaked Link with A/B Test",
+        "active": true,
+        "targetUrls": [
+            {
+                "url": "http://example.com",
+                "weight": 100
+            },
+            {
+                "url": "http://example.in",
+                "weight": 150
+            }
+        ],
+        "urlRotationIdx": 0
+    }
+}
+```
+
+### Query Parameters
+
+Parameter | Type | Description
+--------- | ------- | -----------
+ID | String | Monitor ID
+name | String | Name of the Cloaked Link
+targetUrl1 | String | First URL for A/B Testing
+targetUrlWeight1 | String | Ratio of first URL
+targetUrl2 | String | Second URL for AB Testing
+targetUrlWeight2 | String | Ratio of second URL
