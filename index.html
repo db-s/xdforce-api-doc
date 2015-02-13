@@ -487,6 +487,147 @@ When selecting coordinates, try to provide an address as specific as possible fo
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
+<h1 id="cloaked-links">Cloaked Links</h1>
+
+<h2 id="create-cloaked-links-(single)">Create Cloaked Links (Single)</h2>
+
+<p>Users can create cloaked links with single url through this endpoint.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST /api/v1/monitors/&lt;ID&gt;/cloakedlinks/single</code></p>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre><code class="highlight json"><span class="p">{</span><span class="w">
+    </span><span class="s2">"ok"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cloaked Link created successfully"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"cloaked_link_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"single"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"cloaked_link"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"133L0CQ9Ke02"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"_rev"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1-357f38bfd244ad481a2682e653693cc8"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Link"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"monitorId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12zu0CELWG01"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1423861731407"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sample Cloaked Link with Single URL"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"targetUrls"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="s2">"urlRotationIdx"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"targetUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://hello.world.com"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>String</td>
+<td>Monitor ID</td>
+</tr>
+<tr>
+<td>name</td>
+<td>String</td>
+<td>Name of the Cloaked Link</td>
+</tr>
+<tr>
+<td>targetUrl</td>
+<td>String</td>
+<td>Desired URL for cloaking</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+mismatchRedirectUrl and dangerRedirectUrl will only be available to the users with premium/upgraded plans.
+</aside>
+
+<h2 id="create-cloaked-links-(a/b-test)">Create Cloaked Links (A/B Test)</h2>
+
+<p>Users can create cloaked links with A/B testing through this endpoint.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST /api/v1/monitors/&lt;ID&gt;/cloakedlinks/abtest</code></p>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre><code class="highlight json"><span class="p">{</span><span class="w">
+    </span><span class="s2">"ok"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cloaked Link created successfully"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"cloaked_link_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A/B Test"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"cloaked_link"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"133L0CQ9Ke01"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"_rev"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1-12585a4ae2419818a3b9d4f7f60b1fef"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Link"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"monitorId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12zu0CELWG01"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1423860909012"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sample Cloaked Link with A/B Test"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"targetUrls"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.com"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"weight"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.in"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"weight"</span><span class="p">:</span><span class="w"> </span><span class="mi">150</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"urlRotationIdx"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>String</td>
+<td>Monitor ID</td>
+</tr>
+<tr>
+<td>name</td>
+<td>String</td>
+<td>Name of the Cloaked Link</td>
+</tr>
+<tr>
+<td>targetUrl1</td>
+<td>String</td>
+<td>First URL for A/B Testing</td>
+</tr>
+<tr>
+<td>targetUrlWeight1</td>
+<td>String</td>
+<td>Ratio of first URL</td>
+</tr>
+<tr>
+<td>targetUrl2</td>
+<td>String</td>
+<td>Second URL for AB Testing</td>
+</tr>
+<tr>
+<td>targetUrlWeight2</td>
+<td>String</td>
+<td>Ratio of second URL</td>
+</tr>
+</tbody></table>
+
           <h1 id="errors">Errors</h1>
 
 <p>The xDForce API uses the following error codes:</p>
