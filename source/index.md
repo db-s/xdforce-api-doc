@@ -53,7 +53,14 @@ You must replace `XDFORCE_API_KEY` with your personal API key.
 {
     "ok": true,
     "message": "Account created successfully",
-    "target": "REDIRECTION URL"
+    "user": {
+        "id": "16RB0CPZr201",
+        "email": "user@example.com",
+        "first_name": "John",
+        "last_name": "Doe",
+        "phone": "1234567890",
+        "api_key": "f2b993381512c02c85a8a4a2befbeaec91bda9ad5b4c23fa"
+    }
 }
 ```
 
