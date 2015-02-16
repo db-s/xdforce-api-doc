@@ -558,8 +558,8 @@ mismatchRedirectUrl and dangerRedirectUrl will only be available to the users wi
 <pre><code class="highlight json"><span class="p">{</span><span class="w">
     </span><span class="s2">"ok"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cloaked Link created successfully"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cloaked_link_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A/B Test"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cloaked_link"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"cloakedLinkType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"abtest"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"cloakedLink"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"133L0CQ9Ke01"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"_rev"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1-12585a4ae2419818a3b9d4f7f60b1fef"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Link"</span><span class="p">,</span><span class="w">
@@ -577,7 +577,8 @@ mismatchRedirectUrl and dangerRedirectUrl will only be available to the users wi
                 </span><span class="s2">"weight"</span><span class="p">:</span><span class="w"> </span><span class="mi">150</span><span class="w">
             </span><span class="p">}</span><span class="w">
         </span><span class="p">],</span><span class="w">
-        </span><span class="s2">"urlRotationIdx"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+        </span><span class="s2">"urlRotationIdx"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"visibleUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:3003/l/133L0CQ9Ke01"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -597,26 +598,274 @@ mismatchRedirectUrl and dangerRedirectUrl will only be available to the users wi
 <td>Name of the Cloaked Link</td>
 </tr>
 <tr>
-<td>targetUrl1</td>
+<td>targetUrls1</td>
 <td>String</td>
 <td>First URL for A/B Testing</td>
 </tr>
 <tr>
-<td>targetUrlWeight1</td>
+<td>targetUrlsWeight1</td>
 <td>String</td>
 <td>Ratio of first URL</td>
 </tr>
 <tr>
-<td>targetUrl2</td>
+<td>targetUrls2</td>
 <td>String</td>
 <td>Second URL for AB Testing</td>
 </tr>
 <tr>
-<td>targetUrlWeight2</td>
+<td>targetUrlsWeight2</td>
 <td>String</td>
 <td>Ratio of second URL</td>
 </tr>
 </tbody></table>
+
+<h2 id="list-all-cloaked-links">List all Cloaked Links</h2>
+
+<p>Users can show list of cloaked links associated with a monitor through this endpoint.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST /api/v1/monitors/&lt;ID&gt;/cloakedlinks</code></p>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre><code class="highlight json"><span class="p">{</span><span class="w">
+    </span><span class="s2">"ok"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"cloakedLinks"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"14530CU5SA01"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"_rev"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1-e87270226ba9b3277813f7ddcbb7b89e"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Link"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"monitorId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12zu0CELWG01"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1424095509651"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sample Cloaked Link 1"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"targetUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.com/"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"urlRotationIdx"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"visibleUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:3003/l/14530CU5SA01"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"16AO0CU8Kn01"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"_rev"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2-c5718567543c60876f1f644f1504052a"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Link"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"monitorId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12zu0CELWG01"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1424098278269"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sample Cloaked Link 2"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"targetUrls"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://clink3a.com"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"weight"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://clink3b.com"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"weight"</span><span class="p">:</span><span class="w"> </span><span class="mi">40</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="s2">"urlRotationIdx"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"visibleUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:3003/l/16AO0CU8Kn01"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>If an invalid monitor id is given:</p>
+</blockquote>
+<pre><code class="highlight json"><span class="p">{</span><span class="w">
+    </span><span class="s2">"ok"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Invalid monitor id"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h2 id="fetch-a-cloaked-link">Fetch a Cloaked Link</h2>
+
+<p>Users can view a cloaked link associated with a monitor through this endpoint.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST /api/v1/monitors/&lt;MONITOR_ID&gt;/cloakedlinks/&lt;CLOAKEDLINK_ID&gt;</code></p>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre><code class="highlight json"><span class="p">{</span><span class="w">
+    </span><span class="s2">"ok"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"cloakedLink"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"16AO0CU8Kn01"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"_rev"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2-c5718567543c60876f1f644f1504052a"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Link"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"monitorId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12zu0CELWG01"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1424098278269"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sample Cloaked Link 2"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"targetUrls"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://clink3a.com"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"weight"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://clink3b.com"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"weight"</span><span class="p">:</span><span class="w"> </span><span class="mi">40</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"urlRotationIdx"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"visibleUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:3003/l/16AO0CU8Kn01"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>If an invalid monitor id is given:</p>
+</blockquote>
+<pre><code class="highlight json"><span class="p">{</span><span class="w">
+    </span><span class="s2">"ok"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Invalid monitor id"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>If an invalid cloaked link id is given:</p>
+</blockquote>
+<pre><code class="highlight json"><span class="p">{</span><span class="w">
+    </span><span class="s2">"ok"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Invalid cloaked link id"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h2 id="edit-cloaked-links-(single)">Edit Cloaked Links (Single)</h2>
+
+<p>Users can edit cloaked links with single url through this endpoint.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">PUT /api/v1/monitors/&lt;MONITOR_ID&gt;/cloakedlinks/single/&lt;CLOAKEDLINK_ID&gt;</code></p>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre><code class="highlight json"><span class="p">{</span><span class="w">
+    </span><span class="s2">"ok"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cloaked Link updated successfully"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"cloakedLinkType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"single"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"cloakedLink"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"133L0CQ9Ke02"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"_rev"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2-f342f01b44468226bf406e75cccdfe7d"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Link"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"monitorId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12zu0CELWG01"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1423861731407"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CLink Single 1"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"targetUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.com/"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"urlRotationIdx"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"visibleUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:3003/l/133L0CQ9Ke02"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>targetUrl</td>
+<td>String</td>
+<td>Website address to add as cloaked link</td>
+</tr>
+</tbody></table>
+
+<h2 id="edit-cloaked-links-(a/b-test)">Edit Cloaked Links (A/B Test)</h2>
+
+<p>Users can edit cloaked links with A/B Test through this endpoint.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">PUT /api/v1/monitors/&lt;MONITOR_ID&gt;/cloakedlinks/abtest/&lt;CLOAKEDLINK_ID&gt;</code></p>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre><code class="highlight json"><span class="p">{</span><span class="w">
+    </span><span class="s2">"ok"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cloaked Link updated successfully"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"cloakedLinkType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"abtest"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"cloakedLink"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"133L0CQ9Ke02"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"_rev"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2-f342f01b44468226bf406e75cccdfe7d"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Link"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"monitorId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12zu0CELWG01"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1423861731407"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CLink Single 1"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"targetUrls"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://clinksingle1a.com"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"weight"</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://clinksingle1b.com"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"weight"</span><span class="p">:</span><span class="w"> </span><span class="mi">40</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"urlRotationIdx"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"visibleUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:3003/l/133L0CQ9Ke02"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>targetUrls1</td>
+<td>String</td>
+<td>First URL for A/B Testing</td>
+</tr>
+<tr>
+<td>targetUrlsWeight1</td>
+<td>String</td>
+<td>Ratio of first URL</td>
+</tr>
+<tr>
+<td>targetUrls2</td>
+<td>String</td>
+<td>Second URL for AB Testing</td>
+</tr>
+<tr>
+<td>targetUrlsWeight2</td>
+<td>String</td>
+<td>Ratio of second URL</td>
+</tr>
+</tbody></table>
+
+<h2 id="delete-a-cloaked-link">Delete a Cloaked Link</h2>
+
+<p>Users can delete a cloaked link with A/B Test through this endpoint.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">DELETE /api/v1/monitors/&lt;MONITOR_ID&gt;/cloakedlinks/&lt;CLOAKEDLINK_ID&gt;</code></p>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre><code class="highlight json"><span class="p">{</span><span class="w">
+    </span><span class="s2">"ok"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cloaked Link deleted successfully"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 
           <h1 id="errors">Errors</h1>
 
