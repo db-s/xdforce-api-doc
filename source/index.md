@@ -405,7 +405,6 @@ Users can create cloaked links with single url through this endpoint.
 
 Parameter | Type | Description
 --------- | ------- | -----------
-ID | String | Monitor ID
 name | String | Name of the Cloaked Link
 targetUrl | String | Desired URL for cloaking
 
@@ -455,7 +454,6 @@ Users can create cloaked links with A/B testing through this endpoint.
 
 Parameter | Type | Description
 --------- | ------- | -----------
-ID | String | Monitor ID
 name | String | Name of the Cloaked Link
 targetUrl1 | String | First URL for A/B Testing
 targetUrlWeight1 | String | Ratio of first URL
