@@ -56,10 +56,10 @@ You must replace `XDFORCE_API_KEY` with your personal API key.
     "user": {
         "id": "16RB0CPZr201",
         "email": "user@example.com",
-        "first_name": "John",
-        "last_name": "Doe",
+        "firstName": "John",
+        "lastName": "Doe",
         "phone": "1234567890",
-        "api_key": "f2b993381512c02c85a8a4a2befbeaec91bda9ad5b4c23fa"
+        "apiKey": "f2b993381512c02c85a8a4a2befbeaec91bda9ad5b4c23fa"
     }
 }
 ```
