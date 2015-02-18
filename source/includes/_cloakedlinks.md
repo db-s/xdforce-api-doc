@@ -6,7 +6,7 @@ Users can create cloaked links with single url through this endpoint.
 
 ### HTTP Request
 
-`POST /api/v1/monitors/<ID>/cloakedlinks/single`
+`POST /api/v1/monitors/<MONITOR_ID>/cloakedlinks/single`
 
 > The above command returns JSON structured like this:
 
@@ -47,7 +47,7 @@ Users can create cloaked links with A/B testing through this endpoint.
 
 ### HTTP Request
 
-`POST /api/v1/monitors/<ID>/cloakedlinks/abtest`
+`POST /api/v1/monitors/<MONITOR_ID>/cloakedlinks/abtest`
 
 > The above command returns JSON structured like this:
 
@@ -97,7 +97,7 @@ Users can show list of cloaked links associated with a monitor through this endp
 
 ### HTTP Request
 
-`POST /api/v1/monitors/<ID>/cloakedlinks`
+`POST /api/v1/monitors/<MONITOR_ID>/cloakedlinks`
 
 > The above command returns JSON structured like this:
 

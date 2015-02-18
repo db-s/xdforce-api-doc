@@ -47,7 +47,7 @@ mismatchRedirectUrl and dangerRedirectUrl will only be available to the users wi
 
 Users Geo Locations to the respective Monitor
 
-`POST /api/v1/monitors/<ID>/setgeographicarea`
+`POST /api/v1/monitors/<MONITOR_ID>/setgeographicarea`
 
 > The above command returns JSON structured like this on SUCCESS:
 
@@ -168,7 +168,7 @@ This endpoint will list all the active monitors of a user.
 
 This endpoint will provide the details of a monitor.
 
-`GET /api/v1/monitors/<ID>`
+`GET /api/v1/monitors/<MONITOR_ID>`
 
 > The above command returns JSON structured like this:
 
@@ -215,7 +215,7 @@ This endpoint will provide the details of a monitor.
 
 This endpoint will provide the embed code of a monitor.
 
-`GET /api/v1/monitors/<ID>/embedcode`
+`GET /api/v1/monitors/<MONITOR_ID>/embedcode`
 
 > The above command returns JSON structured like this:
 
@@ -230,7 +230,7 @@ This endpoint will provide the embed code of a monitor.
 
 Users can archive a monitor through this endpoint.
 
-`DELETE /api/v1/monitors/<ID>`
+`DELETE /api/v1/monitors/<MONITOR_ID>`
 
 > The above command returns JSON structured like this:
 
