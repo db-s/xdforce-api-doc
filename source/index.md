@@ -15,6 +15,7 @@ includes:
   - users
   - monitors
   - cloakedlinks
+  - cloakedlinks_stats
   - errors
 
 search: true
