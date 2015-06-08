@@ -220,42 +220,135 @@ By signing up, user will automatically accept the terms and conditions of xDForc
 <th>Parameter</th>
 <th>Type</th>
 <th>Description</th>
+<th>Required</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>name</td>
 <td>String</td>
 <td>Name or Address of the website to be monitored</td>
+<td>Yes</td>
 </tr>
 <tr>
 <td>category</td>
 <td>String</td>
 <td>Category of the Monitor</td>
+<td>Yes</td>
 </tr>
 <tr>
 <td>wantsDesktop</td>
 <td>Boolean</td>
 <td>Accept desktop traffic as good traffic</td>
+<td>No</td>
 </tr>
 <tr>
 <td>wantsPhone</td>
 <td>Boolean</td>
 <td>Accept mobile traffic as good traffic</td>
+<td>No</td>
 </tr>
 <tr>
 <td>wantsTablet</td>
 <td>Boolean</td>
 <td>Accept tablet/device traffic as good traffic</td>
+<td>No</td>
 </tr>
 <tr>
 <td>mismatchRedirectUrl</td>
 <td>String</td>
 <td>Redirect URL for unwanted impressions</td>
+<td>No</td>
 </tr>
 <tr>
 <td>dangerRedirectUrl</td>
 <td>String</td>
 <td>Redirect URL for dangerous impressions</td>
+<td>No</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+mismatchRedirectUrl and dangerRedirectUrl will only be available to the users with premium/upgraded plans.
+</aside>
+
+<h2 id="edit-monitors-settings">Edit Monitors Settings</h2>
+
+<p>Users can edit monitor settings through this endpoint.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">PUT /api/v1/monitors/&lt;MONITOR_ID&gt;</code></p>
+
+<blockquote>
+<p>The above command returns JSON structured like this on SUCCESS:</p>
+</blockquote>
+<pre><code class="highlight json"><span class="p">{</span><span class="w">
+    </span><span class="s2">"ok"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MONITOR_ID"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"rev"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DOCUMENT_REVISION_HASH"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this in case of any ERROR:</p>
+</blockquote>
+<pre><code class="highlight json"><span class="p">{</span><span class="w">
+  </span><span class="s2">"ok"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ERROR_MESSAGE"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>String</td>
+<td>Name or Address of the website to be monitored</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>category</td>
+<td>String</td>
+<td>Category of the Monitor</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>wantsDesktop</td>
+<td>Boolean</td>
+<td>Accept desktop traffic as good traffic</td>
+<td>No</td>
+</tr>
+<tr>
+<td>wantsPhone</td>
+<td>Boolean</td>
+<td>Accept mobile traffic as good traffic</td>
+<td>No</td>
+</tr>
+<tr>
+<td>wantsTablet</td>
+<td>Boolean</td>
+<td>Accept tablet/device traffic as good traffic</td>
+<td>No</td>
+</tr>
+<tr>
+<td>mismatchRedirectUrl</td>
+<td>String</td>
+<td>Redirect URL for unwanted impressions</td>
+<td>No</td>
+</tr>
+<tr>
+<td>dangerRedirectUrl</td>
+<td>String</td>
+<td>Redirect URL for dangerous impressions</td>
+<td>No</td>
 </tr>
 </tbody></table>
 
@@ -393,6 +486,90 @@ When selecting coordinates, try to provide an address as specific as possible fo
         </span><span class="s2">"dangerRedirectUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
         </span><span class="s2">"mismatchRedirectUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
         </span><span class="s2">"archived"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"coordinates"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="s2">"blacklist"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this in case of any ERROR:</p>
+</blockquote>
+<pre><code class="highlight json"><span class="p">{</span><span class="w">
+  </span><span class="s2">"ok"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ERROR_MESSAGE"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h2 id="list-all-archived-monitors">List All Archived Monitors</h2>
+
+<p>This endpoint will list all the archived monitors of a user.</p>
+
+<p><code class="prettyprint">GET /api/v1/monitors?archived=true</code></p>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre><code class="highlight json"><span class="p">{</span><span class="w">
+  </span><span class="s2">"ok"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"monitors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13OG0C57B101"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"_rev"</span><span class="p">:</span><span class="w"> </span><span class="s2">"60-c96ab2a1547ce4c26c1c11407af8324c"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Monitor"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"16VM0C2cuD02"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sample Monitor 1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"wantsDesktop"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"wantsPhone"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"wantsTablet"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"geoStrategy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"coordinates"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"dangerRedirectUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"mismatchRedirectUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"archived"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"blacklist"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+      </span><span class="s2">"coordinates"</span><span class="p">:</span><span class="w">
+        </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kolkata"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">22.572646</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">88.36389500000001</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"radius"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Delhi"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">28.6139391</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">77.2090212</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"radius"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12zu0CELWG01"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"_rev"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1-6466ba5e64216c44db51553ff05e8fb7"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Monitor"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"16VM0C2cuD02"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sample Monitor 2"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Blog - Cultural"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"wantsDesktop"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"wantsPhone"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"wantsTablet"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"geoStrategy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"regions"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"regions"</span><span class="p">:</span><span class="w">
+          </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"*"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"*"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"dangerRedirectUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"mismatchRedirectUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"archived"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
         </span><span class="s2">"coordinates"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
         </span><span class="s2">"blacklist"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
       </span><span class="p">}</span><span class="w">
