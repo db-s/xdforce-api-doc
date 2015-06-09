@@ -90,7 +90,7 @@ mismatchRedirectUrl and dangerRedirectUrl will only be available to the users wi
 
 Users Geo Locations to the respective Monitor
 
-`POST /api/v1/monitors/<MONITOR_ID>/setgeographicarea`
+`PUT /api/v1/monitors/<MONITOR_ID>/setgeographicarea`
 
 > The above command returns JSON structured like this on SUCCESS:
 
@@ -113,11 +113,14 @@ Users Geo Locations to the respective Monitor
 
 ### Query Parameters
 
-Parameter | Type | Options | Default | Description
---------- | ---- | ------- | ------- | -----------
-geoStrategy | String | coordinates, regions | coordinates | Set geographic strategy
-addresses | Array of String | | | List of addresses (if selected `coordinates`)
-country | Array of String | | | List of countries as regions (if selected `regions`)
+Parameter | Type | Options | Default | Description | Required
+--------- | ---- | ------- | ------- | ----------- | --------
+geoStrategy | String | coordinates, regions | coordinates | Set geographic strategy | Yes
+addresses | Array of String | | | List of addresses (if selected `coordinates`) | Yes
+regions | Array of String | | | List of countries as regions (if selected `regions`) | No
+
+* `addresses` must be given, if geoStrategy is set as ***coordinates***.
+* `regions` is effective(optionally), if geoStrategy is set as ***regions***. If no region is given, geo location will be set for all regions.
 
 <aside class="notice">
 When selecting coordinates, try to provide an address as specific as possible for a better result. Location of the address consisting latitude and longitude will be updated automatically when updating the monitors geographic location.
