@@ -360,7 +360,7 @@ mismatchRedirectUrl and dangerRedirectUrl will only be available to the users wi
 
 <p>Users Geo Locations to the respective Monitor</p>
 
-<p><code class="prettyprint">POST /api/v1/monitors/&lt;MONITOR_ID&gt;/setgeographicarea</code></p>
+<p><code class="prettyprint">PUT /api/v1/monitors/&lt;MONITOR_ID&gt;/setgeographicarea</code></p>
 
 <blockquote>
 <p>The above command returns JSON structured like this on SUCCESS:</p>
@@ -390,6 +390,7 @@ mismatchRedirectUrl and dangerRedirectUrl will only be available to the users wi
 <th>Options</th>
 <th>Default</th>
 <th>Description</th>
+<th>Required</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -398,6 +399,7 @@ mismatchRedirectUrl and dangerRedirectUrl will only be available to the users wi
 <td>coordinates, regions</td>
 <td>coordinates</td>
 <td>Set geographic strategy</td>
+<td>Yes</td>
 </tr>
 <tr>
 <td>addresses</td>
@@ -405,15 +407,22 @@ mismatchRedirectUrl and dangerRedirectUrl will only be available to the users wi
 <td></td>
 <td></td>
 <td>List of addresses (if selected <code class="prettyprint">coordinates</code>)</td>
+<td>Yes</td>
 </tr>
 <tr>
-<td>country</td>
+<td>regions</td>
 <td>Array of String</td>
 <td></td>
 <td></td>
 <td>List of countries as regions (if selected <code class="prettyprint">regions</code>)</td>
+<td>No</td>
 </tr>
 </tbody></table>
+
+<ul>
+<li><code class="prettyprint">addresses</code> must be given, if geoStrategy is set as <strong><em>coordinates</em></strong>.</li>
+<li><code class="prettyprint">regions</code> is effective(optionally), if geoStrategy is set as <strong><em>regions</em></strong>. If no region is given, geo location will be set for all regions.</li>
+</ul>
 
 <aside class="notice">
 When selecting coordinates, try to provide an address as specific as possible for a better result. Location of the address consisting latitude and longitude will be updated automatically when updating the monitors geographic location.
